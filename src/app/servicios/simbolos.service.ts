@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class SimbolosService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  obtenerTodosLosSimbolos() {
+    return this.http.get<any[]>('https://api.gemini.com/v1/symbols');
+  }
 }
