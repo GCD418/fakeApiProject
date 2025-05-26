@@ -12,6 +12,8 @@ export class AppComponent {
 
   simbolosService: SimbolosService = inject(SimbolosService);
   constructor() {
+  }
+  obtenerSimbolos() {
     this.simbolosService.obtenerTodosLosSimbolos().subscribe(
       (data) => {
         console.log('Datos de símbolos obtenidos:', data);
