@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SimbolosService } from './servicios/simbolos.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'fakeApiProject';
+
+  simbolosService: SimbolosService = inject(SimbolosService);
+  constructor() {
+    this.simbolosService.obtenerTodosLosSimbolos().subscribe(
+      (data) => {
+        console.log('Datos de símbolos obtenidos:', data);
+      },
+      (error) => {
+        console.error('Error al obtener los símbolos:', error);
+      }
+    );
+  }
 }
