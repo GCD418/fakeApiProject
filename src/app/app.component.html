@@ -1,2 +1,223 @@
-<button (click)="obtenerSimbolos()">Clickeame</button>
+<div class="app-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="app-title">
+        <span class="icon">💎</span>
+        Gemini Trading Dashboard
+      </h1>
+      <p class="app-subtitle">Monitor cryptocurrency symbols, prices, and trades in real-time</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navigation">
+    <button 
+      class="nav-btn" 
+      [class.active]="vistaActiva === 'simbolos'"
+      (click)="cambiarVista('simbolos')">
+      📊 Symbols
+    </button>
+    <button 
+      class="nav-btn" 
+      [class.active]="vistaActiva === 'precios'"
+      (click)="cambiarVista('precios')">
+      💰 Prices
+    </button>
+    <button 
+      class="nav-btn" 
+      [class.active]="vistaActiva === 'detalles'"
+      [disabled]="!simboloSeleccionado"
+      (click)="cambiarVista('detalles')">
+      🔍 Details
+    </button>
+    <button 
+      class="nav-btn" 
+      [class.active]="vistaActiva === 'trades'"
+      [disabled]="!simboloSeleccionado"
+      (click)="obtenerTrades()">
+      📈 Trades
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Symbols View -->
+    <div *ngIf="vistaActiva === 'simbolos'" class="view-container">
+      <div class="view-header">
+        <h2>Available Trading Symbols</h2>
+        <button class="refresh-btn" (click)="obtenerSimbolos()" [disabled]="cargandoSimbolos">
+          <span [class.spinning]="cargandoSimbolos">🔄</span>
+          {{ cargandoSimbolos ? 'Loading...' : 'Refresh' }}
+        </button>
+      </div>
+      
+      <div *ngIf="cargandoSimbolos" class="loading">
+        <div class="spinner"></div>
+        <p>Loading symbols...</p>
+      </div>
+      
+      <div *ngIf="!cargandoSimbolos && simbolos.length > 0" class="symbols-grid">
+        <div 
+          *ngFor="let simbolo of simbolos" 
+          class="symbol-card"
+          (click)="obtenerDetallesSimbolo(simbolo)">
+          <span class="symbol-name">{{ simbolo.toUpperCase() }}</span>
+          <span class="symbol-arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prices View -->
+    <div *ngIf="vistaActiva === 'precios'" class="view-container">
+      <div class="view-header">
+        <h2>Live Price Feed</h2>
+        <button class="refresh-btn" (click)="obtenerPrecios()" [disabled]="cargandoPrecios">
+          <span [class.spinning]="cargandoPrecios">🔄</span>
+          {{ cargandoPrecios ? 'Loading...' : 'Refresh' }}
+        </button>
+      </div>
+      
+      <div *ngIf="cargandoPrecios" class="loading">
+        <div class="spinner"></div>
+        <p>Loading prices...</p>
+      </div>
+      
+      <div *ngIf="!cargandoPrecios && precios.length > 0" class="prices-grid">
+        <div *ngFor="let precio of precios" class="price-card">
+          <div class="price-header">
+            <span class="pair-name">{{ precio.pair.toUpperCase() }}</span>
+            <span 
+              class="change-percent" 
+              [class.positive]="esPositivo(precio.percentChange24h)"
+              [class.negative]="!esPositivo(precio.percentChange24h)">
+              {{ formatearPorcentaje(precio.percentChange24h) }}
+            </span>
+          </div>
+          <div class="price-value">${{ formatearPrecio(precio.price) }}</div>
+          <button 
+            class="view-details-btn"
+            (click)="obtenerDetallesSimbolo(precio.pair)">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Symbol Details View -->
+    <div *ngIf="vistaActiva === 'detalles'" class="view-container">
+      <div class="view-header">
+        <h2>Symbol Details</h2>
+        <span class="selected-symbol" *ngIf="simboloSeleccionado">{{ simboloSeleccionado.toUpperCase() }}</span>
+      </div>
+      
+      <div *ngIf="cargandoDetalles" class="loading">
+        <div class="spinner"></div>
+        <p>Loading symbol details...</p>
+      </div>
+      
+      <div *ngIf="!cargandoDetalles && detallesSimbolo" class="details-card">
+        <div class="details-grid">
+          <div class="detail-item">
+            <label>Symbol</label>
+            <span>{{ detallesSimbolo.symbol }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Base Currency</label>
+            <span>{{ detallesSimbolo.base_currency }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Quote Currency</label>
+            <span>{{ detallesSimbolo.quote_currency }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Status</label>
+            <span class="status" [class.open]="detallesSimbolo.status === 'open'">
+              {{ detallesSimbolo.status.toUpperCase() }}
+            </span>
+          </div>
+          <div class="detail-item">
+            <label>Minimum Order Size</label>
+            <span>{{ detallesSimbolo.min_order_size }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Tick Size</label>
+            <span>{{ detallesSimbolo.tick_size }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Quote Increment</label>
+            <span>{{ detallesSimbolo.quote_increment }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Product Type</label>
+            <span>{{ detallesSimbolo.product_type }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Contract Type</label>
+            <span>{{ detallesSimbolo.contract_type }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Wrap Enabled</label>
+            <span [class.enabled]="detallesSimbolo.wrap_enabled">
+              {{ detallesSimbolo.wrap_enabled ? 'Yes' : 'No' }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="action-btn primary" (click)="obtenerTrades()">
+            View Recent Trades
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trades View -->
+    <div *ngIf="vistaActiva === 'trades'" class="view-container">
+      <div class="view-header">
+        <h2>Recent Trades</h2>
+        <div class="trades-controls">
+          <label for="limiteTrades">Limit:</label>
+          <select id="limiteTrades" [(ngModel)]="limiteTrades" (change)="obtenerTrades()">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <button class="refresh-btn" (click)="obtenerTrades()" [disabled]="cargandoTrades">
+            <span [class.spinning]="cargandoTrades">🔄</span>
+            {{ cargandoTrades ? 'Loading...' : 'Refresh' }}
+          </button>
+        </div>
+      </div>
+      
+      <div *ngIf="cargandoTrades" class="loading">
+        <div class="spinner"></div>
+        <p>Loading trades...</p>
+      </div>
+      
+      <div *ngIf="!cargandoTrades && trades.length > 0" class="trades-table">
+        <div class="table-header">
+          <span>Time</span>
+          <span>Type</span>
+          <span>Price</span>
+          <span>Amount</span>
+          <span>Exchange</span>
+        </div>
+        <div *ngFor="let trade of trades" class="trade-row">
+          <span class="trade-time">{{ formatearFecha(trade.timestamp) }}</span>
+          <span class="trade-type" [class.buy]="trade.type === 'buy'" [class.sell]="trade.type === 'sell'">
+            {{ trade.type.toUpperCase() }}
+          </span>
+          <span class="trade-price">${{ formatearPrecio(trade.price) }}</span>
+          <span class="trade-amount">{{ trade.amount }}</span>
+          <span class="trade-exchange">{{ trade.exchange }}</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
 <router-outlet />
