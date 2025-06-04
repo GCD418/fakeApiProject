@@ -1,0 +1,11 @@
+.contenedor-simbolos{
+ display: flex;
+ flex-direction: row;
+ gap: 1rem;
+ flex-wrap: wrap;
+ div{
+   flex-basis: 25%;
+   flex-grow: 1;
+   flex-shrink: 1;
+ }
+}
