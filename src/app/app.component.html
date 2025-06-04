@@ -1,7 +1,22 @@
 <nav class="topnav">
-  <a [routerLink]="['/inicio']" [routerLinkActive]="['active', 'foo']">Inicio</a>
-  <a [routerLink]="['/symbols']" [routerLinkActive]="['active', 'foo']">Symbols</a>
-  <a [routerLink]="['/fee-promos']" [routerLinkActive]="['active', 'foo']">Fee Promos</a>
-  <a [routerLink]="['/details']" [routerLinkActive]="['active', 'foo']">Details</a>
+  <div class="logo">
+    <img src="assets/svg/bitcoin.svg" alt="Bitcoin logo">
+    <span>BitGet</span>
+  </div>
+  
+  <div class="nav-links">
+    <a [routerLink]="['/inicio']" [routerLinkActive]="['active']">Inicio</a>
+    <a [routerLink]="['/symbols']" [routerLinkActive]="['active']">Symbols</a>
+    <a [routerLink]="['/fee-promos']" [routerLinkActive]="['active']">Fee Promos</a>
+    <a [routerLink]="['/details']" [routerLinkActive]="['active']">Details</a>
+  </div>
+  
+  <div class="right-nav">
+    <a href="#" class="login-btn">Log In</a>
+    <a href="#" class="signup-btn">Sign Up</a>
+  </div>
 </nav>
-<router-outlet />
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
