@@ -66,8 +66,6 @@ export class PriceFeedComponent implements OnInit {
   goToDetails(pair: string): void {
     const cleanSymbol = pair.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
     
-    this.router.navigate(['/detalles', cleanSymbol], {
-      queryParams: { symbol: pair }
-    });
+    this.router.navigate(['/details', cleanSymbol]);
   }
 }
