@@ -10,7 +10,14 @@ export class SimbolosService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerTodosLosSimbolos():Observable<Simbolo[]> {
-    return this.http.get<Simbolo[]>('https://api.gemini.com/v1/symbols');
+  obtenerTodosLosSimbolos():Observable<string[]> {
+    return this.http.get<string[]>('https://api.gemini.com/v1/symbols');
   }
+
+  obtenerTradesPorSimbolo(simbolo: string): Observable<any[]> {
+    return this.http.get<any[]>(`/gemini-api/v1/trades/${simbolo}`);
+  }
+
+//this.http.get(`/gemini-api/v1/trades/${simbolo}`);
+
 }

@@ -1,2 +1,34 @@
-<button (click)="obtenerSimbolos()">Clickeame</button>
-<router-outlet />
+<h1>📊 Consulta de Criptomonedas Gemini</h1>
+
+<button (click)="obtenerSimbolos()">Cargar símbolos</button>
+
+<ul class="simbolos-list" *ngIf="simbolos.length > 0; else noSimbolos">
+  <li *ngFor="let simbolo of simbolos">
+    {{ simbolo }}
+    <button (click)="verLibro(simbolo)">Ver Trades</button>
+  </li>
+</ul>
+
+<ng-template #noSimbolos>
+  <p>No se han cargado símbolos aún.</p>
+</ng-template>
+
+<section *ngIf="libro.length > 0" class="trades-container" aria-live="polite">
+  <h2>📈 Trades recientes de: <span>{{ libroSymbol.toUpperCase() }}</span></h2>
+  <table role="table">
+    <thead>
+      <tr>
+        <th scope="col">Tipo</th>
+        <th scope="col">Precio (USD)</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trade of libro">
+        <td [ngClass]="trade.type">{{ trade.type.toUpperCase() }}</td>
+        <td>{{ trade.price }}</td>
+        <td>{{ trade.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

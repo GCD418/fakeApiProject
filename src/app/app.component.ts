@@ -1,26 +1,46 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { SimbolosService } from './servicios/simbolos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  simbolosService = inject(SimbolosService);
+  simbolos: string[] = [];
+  libro: any[] = [];
+  libroSymbol: string = '';
 
-  simbolosService: SimbolosService = inject(SimbolosService);
-  constructor() {
-  }
   obtenerSimbolos() {
-    this.simbolosService.obtenerTodosLosSimbolos().subscribe(
-      (data) => {
-        console.log('Datos de símbolos obtenidos:', data);
+    this.simbolosService.obtenerTodosLosSimbolos().subscribe({
+      next: (data) => {
+        this.simbolos = data;
+        console.log('Símbolos:', data);
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener los símbolos:', error);
       }
-    );
+    });
+  }
+
+  verLibro(simbolo: string) {
+    this.simbolosService.obtenerTradesPorSimbolo(simbolo).subscribe({
+      next: (data) => {
+        this.libro = data;
+        this.libroSymbol = simbolo;
+        console.log('Trades recientes:', data);
+      },
+      error: (error) => {
+        console.error('Error al obtener los trades:', error);
+      }
+    });
   }
 }
+
+
+
+

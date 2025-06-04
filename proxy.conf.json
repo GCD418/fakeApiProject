@@ -1,0 +1,10 @@
+{
+  "/gemini-api": {
+    "target": "https://api.gemini.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/gemini-api": ""
+    }
+  }
+}
