@@ -1,2 +1,7 @@
-<button (click)="obtenerSimbolos()">Clickeame</button>
+<nav class="topnav">
+  <a [routerLink]="['/inicio']" [routerLinkActive]="['active', 'foo']">Inicio</a>
+  <a [routerLink]="['/symbols']" [routerLinkActive]="['active', 'foo']">Symbols</a>
+  <a [routerLink]="['/fee-promos']" [routerLinkActive]="['active', 'foo']">Fee Promos</a>
+  <a [routerLink]="['/details']" [routerLinkActive]="['active', 'foo']">Details</a>
+</nav>
 <router-outlet />
