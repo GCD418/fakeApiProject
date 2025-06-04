@@ -1,11 +1,24 @@
-.contenedor-simbolos{
- display: flex;
- flex-direction: row;
- gap: 1rem;
- flex-wrap: wrap;
- div{
-   flex-basis: 25%;
-   flex-grow: 1;
-   flex-shrink: 1;
- }
+.contenedor-simbolos {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+
+  div {
+    flex-basis: calc(25% - 1.5rem);
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 200px;
+  }
+
+  p {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+    width: 100%;
+  }
 }

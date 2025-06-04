@@ -8,7 +8,7 @@ export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
     {path: 'symbols', component: SymbolsComponent},
     {path: 'fee-promos', component: FeePromosComponent},
-    {path: 'details', component: DetailsComponent},
+    {path: 'details/:simbolo', component: DetailsComponent},
     {path: '', redirectTo: '/inicio', pathMatch: 'full'}
 
 ];

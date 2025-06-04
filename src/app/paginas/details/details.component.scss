@@ -1,0 +1,92 @@
+.details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 1rem;
+  }
+
+  .loading, .error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+
+  .loading {
+    color: #6c757d;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .detail-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid #007bff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      label {
+        font-weight: bold;
+        color: #495057;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        color: #333;
+        font-size: 1rem;
+
+        &.status {
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          font-weight: bold;
+          text-transform: uppercase;
+          background-color: #6c757d;
+          color: white;
+
+          &.active {
+            background-color: #28a745;
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
+    text-align: center;
+
+    .back-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}
