@@ -8,7 +8,7 @@ import { Simbolo, SimboloDetails } from '../interfaces/simbolo';
 })
 export class SimbolosService {
 
-  private baseUrl = 'https://api.sandbox.gemini.com/v1';
+  private baseUrl = 'https://api.gemini.com/v1';
 
   constructor(private http: HttpClient) { }
 
@@ -19,4 +19,11 @@ export class SimbolosService {
   obtenerDetallesSimbolo(simbolo: string): Observable<SimboloDetails> {
     return this.http.get<SimboloDetails>(`${this.baseUrl}/symbols/details/${simbolo}`);
   }
+
+//
+
+  obtenerTradesPorSimbolo(simbolo: string): Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl}/trades/${simbolo}`);
+  }
+
 }

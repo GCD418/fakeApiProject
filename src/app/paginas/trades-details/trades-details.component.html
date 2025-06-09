@@ -1,0 +1,38 @@
+<div class="trades-details-container">
+  <h1 class="title">Trades recientes para: {{ simbolo }}</h1>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-container">
+    <p>Cargando trades...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error && !loading" class="error-container">
+    <p class="error-message">{{ error }}</p>
+  </div>
+
+  <!-- No trades -->
+  <div *ngIf="!loading && !error && trades.length === 0">
+    <p>No hay trades disponibles para este símbolo.</p>
+  </div>
+
+  <!-- Trades list -->
+  <div *ngIf="!loading && !error && trades.length > 0" class="trades-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trade of trades">
+          <td>{{ trade.price }}</td>
+          <td>{{ trade.amount }}</td>
+          <td>{{ trade.timestamp * 1000 | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

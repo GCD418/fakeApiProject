@@ -4,6 +4,8 @@ import { SymbolsComponent } from './paginas/symbols/symbols.component';
 import { FeePromosComponent } from './paginas/fee-promos/fee-promos.component';
 import { DetailsComponent } from './paginas/details/details.component';
 import { PriceFeedComponent } from './paginas/price-feed/price-feed.component';
+import { TradesComponent } from './paginas/trades/trades.component';
+import { TradesDetailsComponent } from './paginas/trades-details/trades-details.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
@@ -11,6 +13,8 @@ export const routes: Routes = [
     {path: 'fee-promos', component: FeePromosComponent},
     {path: 'details/:simbolo', component: DetailsComponent},
     { path: 'precios', component: PriceFeedComponent },
-    {path: '', redirectTo: '/inicio', pathMatch: 'full'}
-]
+    {path: '', redirectTo: '/inicio', pathMatch: 'full'},
+    {path: 'trades', component: TradesComponent},
+    {path: 'Trades-Details/:symbol', component: TradesDetailsComponent}
+];
 

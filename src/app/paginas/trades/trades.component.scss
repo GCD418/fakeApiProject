@@ -1,0 +1,135 @@
+.symbols-feed-container {
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.loading-container,
+.error-container {
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.retry-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: #c82333;
+}
+
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.symbols-card {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symbols-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.trades-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.trades-button:hover {
+  background-color: #0056b3;
+}
+
+.global-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.global-trades-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.global-trades-button:hover {
+  background-color: #218838;
+}
+
+/* NUEVOS ESTILOS PARA LA TABLA DE TRADES */
+
+.trades-container {
+  margin-top: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trades-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.trades-table th,
+.trades-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.trades-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.trades-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.no-trades-message {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+}
