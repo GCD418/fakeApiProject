@@ -68,4 +68,9 @@ export class PriceFeedComponent implements OnInit {
     
     this.router.navigate(['/details', cleanSymbol]);
   }
+
+  goToCandlestick(pair: string): void {
+    const cleanSymbol = pair.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+    this.router.navigate(['/candlestick', cleanSymbol]);
+  }
 }

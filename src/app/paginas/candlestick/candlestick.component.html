@@ -1,0 +1,12 @@
+<div class="candlestick-container">
+  <h2>Gráfica de Velas: {{ symbol | uppercase }}</h2>
+  <div class="temporality-selector">
+    <label for="temporality">Temporalidad:</label>
+    <select id="temporality" [(ngModel)]="selectedTemporality" (change)="onTemporalityChange()">
+      <option *ngFor="let t of temporalities" [value]="t">{{ t }}</option>
+    </select>
+  </div>
+  <div *ngIf="loading">Cargando gráfica...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <app-candlestick-chart *ngIf="!loading && !error" [candlesticks]="candlesticks"></app-candlestick-chart>
+</div>
