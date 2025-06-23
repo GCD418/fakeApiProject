@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Candlestick } from '../../interfaces/candlestick.interface';
-declare var ApexCharts: any;
+import ApexCharts from 'apexcharts';
 
 @Component({
   selector: 'app-candlestick-chart',
