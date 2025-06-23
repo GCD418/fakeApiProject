@@ -18,12 +18,9 @@ export class PriceFeedService {
   }
 
   getCandlestickData(symbol: string, temporality: Temporality): Observable<Candlestick[]> {
-    // Gemini API endpoint for candlesticks: /v2/candles/{symbol}/{timeframe}
-    // Example: https://api.gemini.com/v2/candles/btcusd/5m
     const url = `https://api.gemini.com/v2/candles/${symbol}/${temporality}`;
     return this.http.get<any[]>(url).pipe(
       // Gemini returns: [ [timestamp, open, close, high, low, volume], ... ]
-      // We map it to our Candlestick interface
       map(data => data.map(item => ({
         time: item[0],
         open: item[1],
