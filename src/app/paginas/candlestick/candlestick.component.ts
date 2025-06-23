@@ -40,10 +40,7 @@ export class CandlestickComponent implements OnInit {
     this.error = null;
     this.priceFeedService.getCandlestickData(this.symbol, this.selectedTemporality).subscribe({
       next: (data) => {
-        // Filter to only last 10 days
-        const now = Math.floor(Date.now() / 1000); // current time in seconds
-        const tenDaysAgo = now - 10 * 24 * 60 * 60;
-        this.candlesticks = data.filter(c => c.time >= tenDaysAgo);
+        this.candlesticks = data;
         this.loading = false;
       },
       error: (err) => {
