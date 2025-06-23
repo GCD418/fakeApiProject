@@ -278,10 +278,12 @@
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid #2b3139;
+  display: flex;
+  gap: 12px;
 }
 
 /* Details button - Binance style */
-.details-button {
+.details-button, .chart-button{
   width: 100%;
   background: linear-gradient(135deg, #f0b90b 0%, #f8d12f 100%);
   color: #181a20;
@@ -301,24 +303,24 @@
   gap: 8px;
 }
 
-.details-button:hover {
+.details-button:hover, .chart-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(240, 185, 11, 0.3);
   background: linear-gradient(135deg, #f8d12f 0%, #f0b90b 100%);
 }
 
-.details-button:active {
+.details-button:active, .chart-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(240, 185, 11, 0.2);
 }
 
-.details-button:focus {
+.details-button:focus, .chart-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.3);
 }
 
 /* Hover effect para toda la tarjeta */
-.price-card:hover .details-button {
+.price-card:hover .details-button, .chart-button {
   box-shadow: 0 4px 16px rgba(240, 185, 11, 0.4);
 }
 
@@ -327,9 +329,10 @@
   .card-actions {
     margin-top: 16px;
     padding-top: 12px;
+    flex-direction: column;
   }
   
-  .details-button {
+  .details-button, .chart-button {
     padding: 10px 16px;
     font-size: 13px;
   }
