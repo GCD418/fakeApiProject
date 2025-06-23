@@ -37,7 +37,7 @@ export class CandlestickChartComponent implements OnChanges, AfterViewInit {
       chart: { type: 'candlestick', height: 350 },
       series: [{ data: seriesData }],
       xaxis: { type: 'datetime' },
-      yaxis: { tooltip: { enabled: true } }
+      yaxis: { tooltip: { enabled: true } },
     });
     this.chart.render();
   }
