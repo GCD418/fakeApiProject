@@ -19,4 +19,18 @@ export class SimbolosService {
   obtenerDetallesSimbolo(simbolo: string): Observable<SimboloDetails> {
     return this.http.get<SimboloDetails>(`${this.baseUrl}/symbols/details/${simbolo}`);
   }
+
+  
+  //
+  getTicker(symbol: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/pubticker/${symbol}`);
+  }
+
+  getCryptos(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/symbols`);
+  }
+
+  getRecentTrades(symbol: string) {
+  return this.http.get(`${this.baseUrl}/trades/${symbol}`);
+}
 }
