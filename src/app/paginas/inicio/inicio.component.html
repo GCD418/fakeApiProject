@@ -1,1 +1,101 @@
-<p>inicio works!</p>
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="gradient-text">Crypto Tracker</span>
+          <span class="emoji">🚀</span>
+        </h1>
+        <p class="hero-subtitle">
+          Tu plataforma definitiva para seguir el mercado de criptomonedas en tiempo real
+        </p>
+        <div class="hero-buttons">
+          <a routerLink="/cryptos" class="btn-primary">
+            Explorar Mercado
+            <span class="btn-icon">📊</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-crypto">₿</div>
+        <div class="floating-crypto">Ξ</div>
+        <div class="floating-crypto">◊</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading State -->
+  <section class="loading-section" *ngIf="loading">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p class="loading-text">Cargando criptomonedas disponibles...</p>
+    </div>
+  </section>
+
+  <!-- Quick Access Section -->
+  <section class="quick-access" *ngIf="!loading && cryptos.length > 0">
+    <div class="section-header">
+      <h2>Acceso Rápido</h2>
+      <p>Explora las criptomonedas más populares</p>
+    </div>
+    
+    <div class="crypto-grid">
+      <a 
+        *ngFor="let crypto of cryptos.slice(0, 12)" 
+        [routerLink]="['/cryptos', crypto]" 
+        class="crypto-card"
+      >
+        <div class="crypto-icon">₿</div>
+        <div class="crypto-name">{{ crypto.toUpperCase() }}</div>
+        <div class="crypto-arrow">→</div>
+      </a>
+    </div>
+
+    <div class="view-all-container" *ngIf="cryptos.length > 12">
+      <a routerLink="/cryptos" class="view-all-btn">
+        Ver todas las {{ cryptos.length }} criptomonedas
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="section-header">
+      <h2>¿Por qué elegir Crypto Tracker?</h2>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Tiempo Real</h3>
+        <p>Precios actualizados al instante desde fuentes confiables</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Responsive</h3>
+        <p>Funciona perfectamente en todos tus dispositivos</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Seguro</h3>
+        <p>Datos seguros y conexiones encriptadas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>¿Listo para comenzar?</h2>
+      <p>Únete a miles de usuarios que confían en nosotros para sus inversiones</p>
+      <a routerLink="/cryptos" class="btn-secondary">
+        Comenzar Ahora
+        <span class="btn-icon">🎯</span>
+      </a>
+    </div>
+  </section>
+</div>
