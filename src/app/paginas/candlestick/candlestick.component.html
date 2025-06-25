@@ -10,7 +10,7 @@
             }
         </select>
     </div>
-    <div *ngIf="loading">Cargando gráfica...</div>
-    <div *ngIf="error">{{ error }}</div>
+    <div class="loading-section" *ngIf="loading">Cargando gráfica...</div>
+    <div class="error-section" *ngIf="error">{{ error }}</div>
     <app-candlestick-chart *ngIf="!loading && !error" [candlesticks]="candlesticks"></app-candlestick-chart>
 </div>

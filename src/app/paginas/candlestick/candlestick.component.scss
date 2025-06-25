@@ -1,0 +1,176 @@
+.candlestick-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #0b0e11;
+  min-height: 100vh;
+  color: #eaecef;
+}
+
+h2 {
+  color: #f0b90b;
+  margin-bottom: 32px;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.temporality-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  background: #1e2329;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  color: #b7bdc6;
+  margin-right: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+select {
+  background: #2b3139;
+  color: #eaecef;
+  border: 1px solid #474d57;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  min-width: 120px;
+  
+  &:hover {
+    border-color: #f0b90b;
+  }
+  
+  &:focus {
+    border-color: #f0b90b;
+    box-shadow: 0 0 0 2px rgba(240, 185, 11, 0.2);
+  }
+  
+  option {
+    background-color: #2b3139;
+  }
+}
+
+/* Loading styles */
+div[class^="loading"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 16px 0;
+  background-color: #1e2329;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #848e9c;
+  font-size: 14px;
+  min-height: 100px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border: 3px solid #2b3139;
+    border-top: 3px solid #f0b90b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 12px;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error styles */
+div[class^="error"] {
+  color: #f6465d;
+  font-size: 16px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: rgba(246, 70, 93, 0.1);
+  border-left: 4px solid #f6465d;
+  border-radius: 4px;
+}
+
+/* Estilos para el componente gráfico de velas */
+::ng-deep app-candlestick-chart {
+  display: block;
+  margin-top: 32px;
+  background-color: #1e2329;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  
+  .apexcharts-canvas {
+    background-color: #1e2329 !important;
+  }
+  
+  .apexcharts-title-text, .apexcharts-yaxis-label, .apexcharts-xaxis-label {
+    fill: #eaecef !important;
+  }
+  
+  .apexcharts-tooltip {
+    background-color: #2b3139 !important;
+    color: #eaecef !important;
+    border-color: #474d57 !important;
+  }
+  
+  .apexcharts-gridline {
+    stroke: #2b3139 !important;
+  }
+  
+  .apexcharts-toolbar {
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  .apexcharts-zoom-icon, .apexcharts-zoomin-icon, .apexcharts-zoomout-icon, 
+  .apexcharts-reset-icon, .apexcharts-menu-icon {
+    fill: #848e9c !important;
+    
+    &:hover {
+      fill: #f0b90b !important;
+    }
+  }
+}
+
+/* Media queries para diseño responsivo */
+@media screen and (max-width: 768px) {
+  .candlestick-container {
+    padding: 16px;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+  
+  .temporality-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    label {
+      margin-bottom: 8px;
+      margin-right: 0;
+    }
+    
+    select {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
