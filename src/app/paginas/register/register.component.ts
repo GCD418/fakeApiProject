@@ -90,7 +90,7 @@ export class RegisterComponent implements OnInit {
             
             // Redirigir al dashboard después de 2 segundos
             setTimeout(() => {
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/precios']);
             }, 2000);
           } else {
             this.error = response.message || 'Error al registrar usuario';
