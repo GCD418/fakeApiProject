@@ -20,6 +20,7 @@ export const routes: Routes = [
     {path: 'cryptos', component: CryptosComponent},
     {path: 'cryptos/:symbol', component: CryptoDetailsComponent},
     {path: 'about', component: AboutComponent},
-    {path: '', redirectTo: '/inicio', pathMatch: 'full'}
+    {path: '', redirectTo: '/inicio', pathMatch: 'full'},
+    {path: '**', redirectTo: '/inicio'}
 ]
 

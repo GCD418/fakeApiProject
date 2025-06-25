@@ -66,10 +66,8 @@ src/
     paginas/           # Componentes de página
       candlestick/
       details/
-      fee-promos/
       inicio/
       price-feed/
-      symbols/
     servicios/         # Servicios para lógica de negocio y API
       price-feed.service.ts
       simbolos.service.ts
