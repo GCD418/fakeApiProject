@@ -1,0 +1,403 @@
+/* src/app/components/price-feed/price-feed.component.css */
+.price-feed-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #0b0e11;
+  min-height: 100vh;
+  color: #eaecef;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  color: #f0b90b;
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.nav-button {
+  background: linear-gradient(135deg, #f0b90b 0%, #f8d12f 100%);
+  color: #181a20;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(240, 185, 11, 0.3);
+}
+
+.nav-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(240, 185, 11, 0.4);
+  background: linear-gradient(135deg, #f8d12f 0%, #f0b90b 100%);
+}
+
+.nav-button:active {
+  transform: translateY(0);
+}
+
+/* Loading styles */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #2b3139;
+  border-top: 3px solid #f0b90b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #848e9c;
+  font-size: 14px;
+}
+
+/* Error styles */
+.error-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-message {
+  color: #f6465d;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.retry-button {
+  background: #2b3139;
+  color: #eaecef;
+  border: 1px solid #474d57;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+  background: #474d57;
+  border-color: #848e9c;
+}
+
+/* Cards grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Price card styles - Binance inspired */
+.price-card {
+  background: #1e2329;
+  border: 1px solid #2b3139;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.price-card:hover {
+  border-color: #474d57;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+  background: #181a20;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2b3139;
+}
+
+.pair-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #eaecef;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pair-label {
+  font-size: 12px;
+  color: #848e9c;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.price-section {
+  margin-bottom: 20px;
+}
+
+.price-label {
+  font-size: 12px;
+  color: #848e9c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.price-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #eaecef;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+.change-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background: rgba(43, 49, 57, 0.5);
+}
+
+.change-label {
+  font-size: 12px;
+  color: #848e9c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.change-value {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+.change-value.positive {
+  color: #0ecb81;
+  background-color: rgba(14, 203, 129, 0.1);
+}
+
+.change-value.negative {
+  color: #f6465d;
+  background-color: rgba(246, 70, 93, 0.1);
+}
+
+/* Stats badges */
+.stats-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.stat-badge {
+  background: #2b3139;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  color: #848e9c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #474d57;
+  background-color: #2b3139;
+  color: #eaecef;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 100%;
+  
+  &:focus {
+    outline: none;
+    border-color: #f0b90b;
+    box-shadow: 0 0 0 2px rgba(240, 185, 11, 0.1);
+  }
+  
+  &::placeholder {
+    color: #848e9c;
+  }
+}
+
+.search-button {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #848e9c;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: #f0b90b;
+  }
+}
+
+/* Mensaje de no resultados */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  background-color: #1e2329;
+  padding: 32px;
+  border-radius: 8px;
+  margin: 24px 0;
+  
+  p {
+    color: #848e9c;
+    font-size: 16px;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .price-feed-container {
+    padding: 16px;
+  }
+  
+  .header-section {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    text-align: center;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .price-card {
+    margin-bottom: 0;
+  }
+  
+  .nav-button {
+    width: 100%;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-body {
+    padding: 16px;
+  }
+  
+  .price-value {
+    font-size: 20px;
+  }
+  
+  .change-section {
+    padding: 10px 12px;
+  }
+}
+
+/* Card actions section */
+.card-actions {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #2b3139;
+  display: flex;
+  gap: 12px;
+}
+
+/* Details button - Binance style */
+.details-button, .chart-button{
+  width: 100%;
+  background: linear-gradient(135deg, #f0b90b 0%, #f8d12f 100%);
+  color: #181a20;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(240, 185, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.details-button:hover, .chart-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(240, 185, 11, 0.3);
+  background: linear-gradient(135deg, #f8d12f 0%, #f0b90b 100%);
+}
+
+.details-button:active, .chart-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(240, 185, 11, 0.2);
+}
+
+.details-button:focus, .chart-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.3);
+}
+
+/* Hover effect para toda la tarjeta */
+.price-card:hover .details-button, .chart-button {
+  box-shadow: 0 4px 16px rgba(240, 185, 11, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .card-actions {
+    margin-top: 16px;
+    padding-top: 12px;
+    flex-direction: column;
+  }
+  
+  .details-button, .chart-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}

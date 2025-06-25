@@ -1,0 +1,486 @@
+$primary-bg: #0b0e11;
+$secondary-bg: #1e2329;
+$tertiary-bg: #2b3139;
+$accent-color: #f0b90b;
+$accent-light: #f8d12f;
+$text-primary: #eaecef;
+$text-secondary: #b7bdc6;
+$text-muted: #848e9c;
+$success-color: #0ecb81;
+$danger-color: #f6465d;
+$border-color: #2b3139;
+
+.home-container {
+  min-height: 100vh;
+  background-color: $primary-bg;
+  overflow-x: hidden;
+  color: $text-primary;
+}
+
+// Hero Section
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid $border-color;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero-text {
+  color: $text-primary;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  
+  .gradient-text {
+    background: linear-gradient(135deg, $accent-color, $accent-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .emoji {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    margin-left: 10px;
+    font-size: 3.5rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: $text-secondary;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, $accent-color 0%, $accent-light 100%);
+  color: #181a20;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba($accent-color, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba($accent-color, 0.4);
+    background: linear-gradient(135deg, $accent-light 0%, $accent-color 100%);
+  }
+
+  .btn-icon {
+    font-size: 1.2rem;
+  }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: $tertiary-bg;
+  color: $text-primary;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 1px solid $border-color;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background: lighten($tertiary-bg, 5%);
+    transform: translateY(-3px);
+    border-color: $accent-color;
+  }
+
+  .btn-icon {
+    font-size: 1.2rem;
+  }
+}
+
+// Hero Visual
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 400px;
+}
+
+.floating-crypto {
+  position: absolute;
+  font-size: 4rem;
+  color: rgba($accent-color, 0.8);
+  animation: float 6s ease-in-out infinite;
+  background: linear-gradient(135deg, $accent-color 0%, $accent-light 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  &:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+    font-size: 5rem;
+  }
+  
+  &:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: 2s;
+    font-size: 4.5rem;
+  }
+  
+  &:nth-child(3) {
+    bottom: 20%;
+    left: 50%;
+    animation-delay: 4s;
+    font-size: 4rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(5deg); }
+  66% { transform: translateY(10px) rotate(-5deg); }
+}
+
+// Loading Section
+.loading-section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.loading-content {
+  max-width: 400px;
+  margin: 0 auto;
+  color: $text-primary;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid $tertiary-bg;
+  border-top: 4px solid $accent-color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 30px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: $text-secondary;
+}
+
+// Quick Access Section
+.quick-access {
+  padding: 100px 20px;
+  background: $secondary-bg;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: $text-primary;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: $accent-color;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $text-secondary;
+  }
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.crypto-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: $tertiary-bg;
+  border-radius: 8px;
+  text-decoration: none;
+  color: $text-primary;
+  transition: all 0.3s ease;
+  border: 1px solid $border-color;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: $accent-color;
+    
+    .crypto-arrow {
+      transform: translateX(5px);
+      color: $accent-color;
+    }
+  }
+}
+
+.crypto-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.crypto-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-grow: 1;
+}
+
+.crypto-arrow {
+  font-size: 1.2rem;
+  color: #667eea;
+  transition: transform 0.3s ease;
+}
+
+.view-all-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    
+    .arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+}
+
+// Features Section
+.features {
+  padding: 100px 20px;
+  color: white;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+// CTA Section
+.cta {
+  padding: 100px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  color: white;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-visual {
+    height: 200px;
+  }
+
+  .floating-crypto {
+    font-size: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .crypto-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero, .quick-access, .features, .cta {
+    padding: 60px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .btn-primary, .btn-secondary, .view-all-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .crypto-card {
+    padding: 15px;
+  }
+
+  .crypto-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

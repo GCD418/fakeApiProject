@@ -1,1 +1,74 @@
-<p>details works!</p>
+<div class="details-container">
+  <div *ngIf="loading" class="loading">
+    <p>Cargando detalles del símbolo...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="simboloDetails && !loading && !error" class="symbol-details">
+    <h1>Detalles del Símbolo: {{ simboloDetails.nombre }}</h1>
+    
+    <div class="details-grid">
+      <div class="detail-item">
+        <label>Nombre:</label>
+        <span>{{ simboloDetails.nombre }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Moneda Base:</label>
+        <span>{{ simboloDetails.base_currency }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Moneda de Cotización:</label>
+        <span>{{ simboloDetails.quote_currency }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Tamaño de Tick:</label>
+        <span>{{ simboloDetails.tick_size }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Incremento de Cotización:</label>
+        <span>{{ simboloDetails.quote_increment }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Tamaño Mínimo de Orden:</label>
+        <span>{{ simboloDetails.min_order_size }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Estado:</label>
+        <span class="status" [class.active]="simboloDetails.status === 'open'">{{ simboloDetails.status }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Wrap Habilitado:</label>
+        <span>{{ simboloDetails.wrap_enabled ? 'Sí' : 'No' }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Tipo de Producto:</label>
+        <span>{{ simboloDetails.product_type }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Tipo de Contrato:</label>
+        <span>{{ simboloDetails.contract_type }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Moneda del Precio del Contrato:</label>
+        <span>{{ simboloDetails.contract_price_currency }}</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="goBack()" class="back-button">Volver a Símbolos</button>
+    </div>
+  </div>
+</div>

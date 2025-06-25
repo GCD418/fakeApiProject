@@ -1,0 +1,65 @@
+<div class="crypto-details-container">
+  <div class="header-section">
+    <h2 class="crypto-title">
+      <span class="crypto-symbol">{{ symbol.toUpperCase() }}</span>
+      <span class="details-text">Detalles</span>
+    </h2>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Cargando información...</p>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!loading" class="content-section">
+    <!-- Price Card -->
+    <div class="price-card">
+      <div class="price-label">Precio Actual</div>
+      <div class="price-value">${{ price | number:'1.2-2' }}</div>
+      <div class="price-indicator positive">
+        <i class="arrow-up"></i>
+        <span>En tiempo real</span>
+      </div>
+    </div>
+
+    <!-- Trades Section -->
+    <div class="trades-section">
+      <div class="section-header">
+        <h4 class="section-title">
+          <i class="trade-icon"></i>
+          Últimos Trades
+        </h4>
+        <span class="trades-count">{{ trades.length }} operaciones</span>
+      </div>
+
+      <div class="table-container">
+        <table class="trades-table">
+          <thead>
+            <tr>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Fecha y Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trade of trades; trackBy: trackByTrade" class="trade-row">
+              <td class="price-cell">
+                <span class="currency-symbol">$</span>
+                <span class="price-amount">{{ trade.price | number:'1.2-2' }}</span>
+              </td>
+              <td class="amount-cell">
+                <span class="amount-value">{{ trade.amount | number:'1.4-4' }}</span>
+                <span class="symbol-small">{{ symbol.toUpperCase() }}</span>
+              </td>
+              <td class="timestamp-cell">
+                {{ trade.timestamp * 1000 | date: 'dd/MM/yyyy HH:mm:ss' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

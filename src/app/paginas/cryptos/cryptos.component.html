@@ -1,0 +1,89 @@
+<div class="crypto-market-container">
+  <!-- Header Section -->
+  <div class="market-header">
+    <div class="header-content">
+      <h1 class="main-title">Mercado de Criptomonedas</h1>
+      <p class="subtitle">Precios en tiempo real de las principales criptomonedas</p>
+    </div>
+    
+    <!-- Market Stats -->
+    <div class="market-stats" *ngIf="!loading && !error && cryptos.length > 0">
+      <div class="stat-item">
+        <span class="stat-value">{{ cryptos.length }}</span>
+        <span class="stat-label">Criptomonedas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">24h</span>
+        <span class="stat-label">Actualización</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="market-content">
+    <!-- Loading State -->
+    <div class="loading-state" *ngIf="loading">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+      <div class="loading-text">Cargando criptomonedas...</div>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" *ngIf="error && !loading">
+      <div class="error-icon">⚠️</div>
+      <h3 class="error-title">Error al cargar los datos</h3>
+      <p class="error-message">Por favor, intenta nuevamente más tarde</p>
+    </div>
+
+    <!-- Market Table -->
+    <div class="market-table-container" *ngIf="!loading && !error && cryptos.length > 0">
+      <div class="table-header">
+        <h3>Mercado Spot</h3>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="market-table">
+          <thead>
+            <tr>
+              <th class="col-name">Criptomoneda</th>
+              <th class="col-price">Precio Actual (USD)</th>
+              <th class="col-actions">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row" *ngFor="let crypto of cryptos">
+              <td class="crypto-name">
+                <div class="crypto-info">
+                  <div class="crypto-avatar">
+                    {{ crypto.symbol.charAt(0).toUpperCase() }}
+                  </div>
+                  <div class="crypto-details">
+                    <span class="symbol">{{ crypto.symbol.toUpperCase() }}</span>
+                  </div>
+                </div>
+              </td>
+              
+              <td class="crypto-price">
+                <span class="price-value">${{ crypto.price.toFixed(4) }}</span>
+              </td>
+              
+              <td class="crypto-actions">
+                <a [routerLink]="['/cryptos', crypto.symbol]" class="action-btn primary">
+                  Ver Detalles
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!loading && !error && cryptos.length === 0">
+      <div class="empty-icon">📊</div>
+      <h3 class="empty-title">No se encontraron criptomonedas</h3>
+      <p class="empty-message">No hay datos disponibles en este momento</p>
+    </div>
+  </div>
+</div>

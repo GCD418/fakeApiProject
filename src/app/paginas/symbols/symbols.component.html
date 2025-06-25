@@ -1,1 +1,9 @@
-<p>symbols works!</p>
+<div class="contenedor-simbolos">
+    @for ( simbolo of listaDeSimbolos; track simbolo ) {
+    <div>
+        <app-symbol [simbolo]="simbolo"></app-symbol>
+    </div>
+    } @empty {
+    <p>No existen símbolos</p>
+    }
+</div>

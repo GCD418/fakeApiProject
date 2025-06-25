@@ -1,14 +1,16 @@
 <nav class="topnav">
   <div class="logo">
-    <img src="assets/svg/bitcoin.svg" alt="Bitcoin logo">
+    <img src="../assets/svg/bitcoin.svg" alt="Bitcoin logo">
     <span>BitGet</span>
   </div>
   
   <div class="nav-links">
     <a [routerLink]="['/inicio']" [routerLinkActive]="['active']">Inicio</a>
-    <a [routerLink]="['/symbols']" [routerLinkActive]="['active']">Symbols</a>
-    <a [routerLink]="['/fee-promos']" [routerLinkActive]="['active']">Fee Promos</a>
-    <a [routerLink]="['/details']" [routerLinkActive]="['active']">Details</a>
+    <!-- <a [routerLink]="['/symbols']" [routerLinkActive]="['active']">Symbols</a>
+    <a [routerLink]="['/fee-promos']" [routerLinkActive]="['active']">Fee Promos</a> -->
+    <a [routerLink]="['/precios']" [routerLinkActive]="['active']">Prices</a>
+    <a [routerLink]="['/cryptos']" [routerLinkActive]="['active']">Criptomonedas</a>
+    <a [routerLink]="['/about']" [routerLinkActive]="['active']">Acerca de</a>
   </div>
   
   <div class="right-nav">
