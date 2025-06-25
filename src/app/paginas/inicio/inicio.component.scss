@@ -1,7 +1,20 @@
+$primary-bg: #0b0e11;
+$secondary-bg: #1e2329;
+$tertiary-bg: #2b3139;
+$accent-color: #f0b90b;
+$accent-light: #f8d12f;
+$text-primary: #eaecef;
+$text-secondary: #b7bdc6;
+$text-muted: #848e9c;
+$success-color: #0ecb81;
+$danger-color: #f6465d;
+$border-color: #2b3139;
+
 .home-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: $primary-bg;
   overflow-x: hidden;
+  color: $text-primary;
 }
 
 // Hero Section
@@ -12,6 +25,7 @@
   justify-content: center;
   position: relative;
   padding: 20px;
+  border-bottom: 1px solid $border-color;
 
   &::before {
     content: '';
@@ -20,7 +34,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
     opacity: 0.3;
   }
 }
@@ -34,20 +48,22 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  padding: 0 20px;
 }
 
 .hero-text {
-  color: white;
+  color: $text-primary;
 }
 
 .hero-title {
   font-size: 4rem;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   line-height: 1.1;
+  letter-spacing: -0.02em;
   
   .gradient-text {
-    background: linear-gradient(135deg, #fff, #f0f0f0);
+    background: linear-gradient(135deg, $accent-color, $accent-light);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -57,6 +73,7 @@
     display: inline-block;
     animation: bounce 2s infinite;
     margin-left: 10px;
+    font-size: 3.5rem;
   }
 }
 
@@ -68,9 +85,10 @@
 
 .hero-subtitle {
   font-size: 1.3rem;
-  opacity: 0.9;
+  color: $text-secondary;
   margin-bottom: 40px;
   line-height: 1.6;
+  max-width: 540px;
 }
 
 .hero-buttons {
@@ -83,18 +101,21 @@
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #ff6b6b, #ffa726);
-  color: white;
+  background: linear-gradient(135deg, $accent-color 0%, $accent-light 100%);
+  color: #181a20;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 4px 16px rgba($accent-color, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 8px 24px rgba($accent-color, 0.4);
+    background: linear-gradient(135deg, $accent-light 0%, $accent-color 100%);
   }
 
   .btn-icon {
@@ -107,20 +128,21 @@
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: $tertiary-bg;
+  color: $text-primary;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
+  border: 1px solid $border-color;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: lighten($tertiary-bg, 5%);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    border-color: $accent-color;
   }
 
   .btn-icon {
@@ -140,25 +162,32 @@
 .floating-crypto {
   position: absolute;
   font-size: 4rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba($accent-color, 0.8);
   animation: float 6s ease-in-out infinite;
+  background: linear-gradient(135deg, $accent-color 0%, $accent-light 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   
   &:nth-child(1) {
     top: 20%;
     left: 20%;
     animation-delay: 0s;
+    font-size: 5rem;
   }
   
   &:nth-child(2) {
     top: 60%;
     right: 20%;
     animation-delay: 2s;
+    font-size: 4.5rem;
   }
   
   &:nth-child(3) {
     bottom: 20%;
     left: 50%;
     animation-delay: 4s;
+    font-size: 4rem;
   }
 }
 
@@ -177,14 +206,14 @@
 .loading-content {
   max-width: 400px;
   margin: 0 auto;
-  color: white;
+  color: $text-primary;
 }
 
 .spinner {
   width: 60px;
   height: 60px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid white;
+  border: 4px solid $tertiary-bg;
+  border-top: 4px solid $accent-color;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 30px;
@@ -197,30 +226,30 @@
 
 .loading-text {
   font-size: 1.2rem;
-  opacity: 0.9;
+  color: $text-secondary;
 }
 
 // Quick Access Section
 .quick-access {
   padding: 100px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: $secondary-bg;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 60px;
-  color: white;
+  color: $text-primary;
 
   h2 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 15px;
+    color: $accent-color;
   }
 
   p {
     font-size: 1.2rem;
-    opacity: 0.8;
+    color: $text-secondary;
   }
 }
 
@@ -237,19 +266,21 @@
   align-items: center;
   gap: 15px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
+  background: $tertiary-bg;
+  border-radius: 8px;
   text-decoration: none;
-  color: #333;
+  color: $text-primary;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid $border-color;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: $accent-color;
     
     .crypto-arrow {
       transform: translateX(5px);
+      color: $accent-color;
     }
   }
 }
