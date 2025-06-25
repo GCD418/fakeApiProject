@@ -1,0 +1,142 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h2>Crear Cuenta</h2>
+      <p>Únete a CryptoApp y comienza a operar</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      
+      <!-- Nombre de usuario -->
+      <div class="form-group">
+        <label for="username">Nombre de usuario *</label>
+        <input 
+          type="text" 
+          id="username"
+          formControlName="username" 
+          class="form-control"
+          [class.is-invalid]="hasFieldError('username')"
+          placeholder="Tu nombre de usuario único">
+        <div *ngIf="hasFieldError('username')" class="invalid-feedback">
+          {{ getFieldError('username') }}
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input 
+          type="email" 
+          id="email"
+          formControlName="email" 
+          class="form-control"
+          [class.is-invalid]="hasFieldError('email')"
+          placeholder="tu@email.com">
+        <div *ngIf="hasFieldError('email')" class="invalid-feedback">
+          {{ getFieldError('email') }}
+        </div>
+      </div>
+
+      <!-- Nombre y Apellido en una fila -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">Nombre *</label>
+          <input 
+            type="text" 
+            id="first_name"
+            formControlName="first_name" 
+            class="form-control"
+            [class.is-invalid]="hasFieldError('first_name')"
+            placeholder="Tu nombre">
+          <div *ngIf="hasFieldError('first_name')" class="invalid-feedback">
+            {{ getFieldError('first_name') }}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="last_name">Apellido *</label>
+          <input 
+            type="text" 
+            id="last_name"
+            formControlName="last_name" 
+            class="form-control"
+            [class.is-invalid]="hasFieldError('last_name')"
+            placeholder="Tu apellido">
+          <div *ngIf="hasFieldError('last_name')" class="invalid-feedback">
+            {{ getFieldError('last_name') }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Teléfono (opcional) -->
+      <div class="form-group">
+        <label for="phone">Teléfono (opcional)</label>
+        <input 
+          type="tel" 
+          id="phone"
+          formControlName="phone" 
+          class="form-control"
+          [class.is-invalid]="hasFieldError('phone')"
+          placeholder="+1234567890">
+        <div *ngIf="hasFieldError('phone')" class="invalid-feedback">
+          {{ getFieldError('phone') }}
+        </div>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="form-group">
+        <label for="password">Contraseña *</label>
+        <input 
+          type="password" 
+          id="password"
+          formControlName="password" 
+          class="form-control"
+          [class.is-invalid]="hasFieldError('password')"
+          placeholder="Mínimo 6 caracteres">
+        <div *ngIf="hasFieldError('password')" class="invalid-feedback">
+          {{ getFieldError('password') }}
+        </div>
+      </div>
+
+      <!-- Confirmar Contraseña -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Contraseña *</label>
+        <input 
+          type="password" 
+          id="confirmPassword"
+          formControlName="confirmPassword" 
+          class="form-control"
+          [class.is-invalid]="hasFieldError('confirmPassword')"
+          placeholder="Repite tu contraseña">
+        <div *ngIf="hasFieldError('confirmPassword')" class="invalid-feedback">
+          {{ getFieldError('confirmPassword') }}
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <div *ngIf="success" class="alert alert-success">
+        {{ success }}
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="btn btn-primary btn-block"
+        [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+        {{ loading ? 'Creando cuenta...' : 'Crear Cuenta' }}
+      </button>
+
+      <!-- Login Link -->
+      <div class="text-center mt-3">
+        <p>¿Ya tienes cuenta? 
+          <a href="#" (click)="goToLogin()" class="login-link">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
