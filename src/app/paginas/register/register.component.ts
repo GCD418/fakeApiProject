@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   ) {
     // Redirigir al dashboard si ya está logueado
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/precios']);
     }
   }
 

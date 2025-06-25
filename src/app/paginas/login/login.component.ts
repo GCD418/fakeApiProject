@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ) {
     // Redirigir al dashboard si ya está logueado
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/precios']);
     }
   }
 
@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]]
     });
 
-    // Obtener la URL de retorno de los parámetros de la consulta o usar '/dashboard' por defecto
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    // Obtener la URL de retorno de los parámetros de la consulta o usar '/precios' por defecto
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/precios';
   }
 
   // Getter para acceso fácil a los campos del formulario
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         console.log('Login exitoso:', response);
         // Guardar token y redirigir
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['/precios']);
       },
       error: (error) => {
         console.error('Error de login:', error);

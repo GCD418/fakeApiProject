@@ -14,7 +14,6 @@ import { CryptoDetailsComponent } from './paginas/crypto-details/crypto-details.
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
     {path: 'symbols', component: SymbolsComponent},
-    {path: 'fee-promos', component: FeePromosComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'details/:simbolo', component: DetailsComponent},
